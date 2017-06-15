@@ -94,5 +94,5 @@ class Recommendation:
     def compute_all_similarities(self, user):
         similarities = []
         for key, other_user in self.test_users.items():
-            similarities.append(self.get_similarity(user, other_user))
+            similarities.append([self.get_similarity(user, other_user), other_user])
         return similarities
