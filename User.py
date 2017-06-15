@@ -52,13 +52,13 @@ class User:
 
         # Il faut traiter ici le message
         if clean_message == 'yes':
-            answer_yes(self)
+            self.answer_yes()
             print(self.good_ratings,self.bad_ratings)
         elif clean_message == 'no':
-            answer_no(self)
+            self.answer_no()
             print(self.good_ratings,self.bad_ratings)
         else:
-            answer_neutral(self)
+            self.answer_neutral()
             print(self.good_ratings,self.bad_ratings)
         return
 
