@@ -81,7 +81,13 @@ class Recommendation:
     # Calcule la similarité entre 2 utilisateurs
     @staticmethod
     def get_similarity(user_a, user_b):
-        return 0
+        prod_scal = 0
+        for el in user_a.good_ratings:
+            if el in user_a.good_ratings:
+                prod_scal+=1
+            elif el in user_a.badd_ratings:
+                prod_scal-=1
+        return prod_scal / np.sqrt(user_a.get_norm() * user_b.get_norm())
 
     # Calcule la similarité entre un utilisateur et tous les utilisateurs de tests
     def compute_all_similarities(self, user):
