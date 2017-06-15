@@ -70,7 +70,12 @@ class Recommendation:
 
     # Affiche la recommandation pour l'utilisateur
     def make_recommendation(self, user):
-        print(self.compute_all_similarities(user))
+        similarities = self.compute_all_similarities(user)
+
+        sorted(similarities, key=lambda x: x[0])
+        best_match_user = similarities[0][1]
+
+        print(best_match_user)
         return "Vous n'avez pas de recommandation pour le moment."
 
     # Pose une question à l'utilisateur
@@ -94,5 +99,5 @@ class Recommendation:
     def compute_all_similarities(self, user):
         similarities = []
         for key, other_user in self.test_users.items():
-            similarities.append([self.get_similarity(user, other_user), other_user])
+            similarities.append((self.get_similarity(user, other_user), other_user))
         return similarities
