@@ -70,6 +70,7 @@ class Recommendation:
 
     # Affiche la recommandation pour l'utilisateur
     def make_recommendation(self, user):
+        print(self.compute_all_similarities(user))
         return "Vous n'avez pas de recommandation pour le moment."
 
     # Pose une question à l'utilisateur
@@ -91,4 +92,7 @@ class Recommendation:
 
     # Calcule la similarité entre un utilisateur et tous les utilisateurs de tests
     def compute_all_similarities(self, user):
-        return []
+        similarities = []
+        for key, other_user in self.test_users.items():
+            similarities.append(self.get_similarity(user, other_user))
+        return similarities
