@@ -1,7 +1,7 @@
 # coding: utf-8
 
 from User import User
-from random import randint
+from random import randint, choice
 
 import numpy as np
 from sklearn.cluster import KMeans
@@ -74,11 +74,9 @@ class Recommendation:
 
     # Pose une question à l'utilisateur
     def ask_question(self, user):
-        seigneur = "seigneur des anneaux"
-        harry = "harry potter"
-        film = seigneur if randint(0,1) else harry
+        film = choice(self.movies)
 
-        return "As tu aimé " + str(film) + " ?"
+        return "As tu aimé " + str(film.title) + " ?"
 
     # Calcule la similarité entre 2 utilisateurs
     @staticmethod
